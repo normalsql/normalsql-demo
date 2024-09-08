@@ -1,0 +1,11 @@
+.DS_Store
+*.jar
+*.asc
+*.class
+/target/
+
+# ANTLR
+*.tokens
+*.interp
+
+/lib/
