@@ -45,7 +45,6 @@
         </executions>
         <configuration>
           <description>NormalSQL Demo</description>
-          <driver>org.h2.Driver</driver>
           <url>jdbc:h2:mem:</url>
           <username>username</username>
           <password>password</password>
