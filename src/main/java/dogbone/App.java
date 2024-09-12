@@ -1,5 +1,8 @@
 package dogbone;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 /**
  * Hello world!
  *
@@ -10,8 +13,14 @@ public class App
         throws Exception
     {
         System.out.println( "Hello World!" );
-//        Class.forName( "org.h2.Driver" );
-        Class.forName( "com.mysql.jdbc.Driver" );
-//        Class.forName( "org.h2.Driver" );
+
+        Connection conn = DriverManager.getConnection( "jdbc:h2:mem:", null, null );
+
+        SelectOne selectOne = new SelectOne( conn );
+        SelectOneResultSet ugh = selectOne.execute();
+        while( ugh.hasNext() )
+        {
+            System.out.println(ugh.getONE());
+        }
     }
 }
