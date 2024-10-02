@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="db5d3635-8c79-4dfc-90b1-d7c5fac6bcad" name="in-memory Mapping">
+      <data-sources db="c3cb6f88-9774-4eae-85c4-eb19d548f1f1" ddl="b6fce6eb-96bd-4a7c-bb4b-cef59bf689b9" />
+    </mapping>
+  </component>
+</project>
