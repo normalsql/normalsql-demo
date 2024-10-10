@@ -46,9 +46,9 @@
         </executions>
         <configuration>
           <description>NormalSQL Demo</description>
-          <url>jdbc:h2:mem:</url>
-          <username>username</username>
-          <password>password</password>
+          <url>jdbc:h2:tcp://localhost/petclinic-jdbc</url>
+<!--          <username>username</username>-->
+<!--          <password>password</password>-->
         </configuration>
         <dependencies>
 <!--        <dependency>-->
