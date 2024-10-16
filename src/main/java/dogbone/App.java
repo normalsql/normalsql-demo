@@ -1,9 +1,9 @@
 package dogbone;
 
-//import petclinic.PetsReport;
+import petclinic.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
+import java.time.Instant;
 
 /**
  * Hello world!
@@ -14,34 +14,43 @@ public class App
     public static void main( String[] args )
         throws Exception
     {
-        System.out.println( "Hello World!" );
-
         Connection conn = DriverManager.getConnection( "jdbc:h2:tcp://localhost/petclinic-jdbc", null, null );
+//        TableIdentifierInspector.findTableIdentifier( "pets", conn );
 
-        String sql = """
-           SELECT o.Last_Name AS Last, p.Name AS First, t.Name AS Species, Birth_Date AS DOB
-             FROM Owners o
-        LEFT JOIN Pets p ON o.Id = p.Owner_Id
-        LEFT JOIN Types t ON p.Type_Id = T.Id
-                       """;
+        var report = new PetsReport( conn );
+        report.setLast_Name( "Frank%" );
+//
+//        extracted( report );
+//
+//        var inserter = new InsertPet( conn );
+//        inserter.setName( "Dolly" );
+//        Date now = new Date( System.currentTimeMillis() );
+//        inserter.setBirth_Date( now );
+//        var insertRS = inserter.execute();
+//        insertRS.next();
+//        var petID = insertRS.getInt( 1 );
+//
+//        extracted( report );
+//
+//        var updater = new UpdatePet( conn );
+//        updater.setID( petID );
+//        var updateCount = updater.execute();
+//        extracted( report );
+//
+//
+//        var deleter = new DeletePet( conn );
+//        deleter.setID( petID );
+//        var deleteCount = deleter.execute();
+//        extracted( report );
 
-        var ps = conn.prepareStatement( sql );
-        ps.execute();
-        ps.getResultSet();
+    }
 
-
-//        var report = new PetsReport( conn );
-//        report.setLast_Name( "%" );
-//        var reportRS = report.execute();
-//        while( reportRS.hasNext() )
-//        {
-//            System.out.println( reportRS.toString() );
-//        }
-//        SelectOne selectOne = new SelectOne( conn );
-//        SelectOneResultSet ugh = selectOne.execute();
-//        while( ugh.hasNext() )
-//        {
-//            System.out.println(ugh.getONE());
-//        }
+    public static void extracted( PetsReport report ) throws SQLException
+    {
+        var reportRS = report.execute();
+        while( reportRS.hasNext() )
+        {
+            System.out.println( reportRS );
+        }
     }
 }
